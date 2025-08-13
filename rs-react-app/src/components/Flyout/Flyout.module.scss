@@ -1,42 +1,18 @@
 @use '../../assets/styles/globals' as *;
 
-.container {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: var(--background-layout);
-  color: var(--text);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px var(--shadow);
-  border: 1px solid var(--border);
-  z-index: 100;
-  transition: all 0.3s ease;
-  width: 80%;
-  max-width: 80%;
-
-  [data-theme='dark'] & {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  @media (max-width: 768px) {
-    bottom: 1rem;
-    right: 1rem;
-    padding: 1rem;
-    max-width: 250px;
-  }
-}
-
 .flyout {
   background: var(--background-layout);
-  width: 80%;
-  max-width: 80%;
   margin: 0 auto;
   border-radius: 10px;
   border: var(--btn-hover-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+  transform: translateX(calc((100vw / 2) - 50% - 10px));
 }
 
 .title {
@@ -49,8 +25,8 @@
 
 .buttonContainer {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
-  width: 100%;
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -59,7 +35,6 @@
 }
 
 .button {
-  flex: 1;
   padding: 0.75rem 1rem;
   border: 1px solid var(--background-layout);
   border-radius: 6px;
@@ -68,6 +43,7 @@
   transition: all 0.2s ease;
   background: var(--primary);
   color: var(--background-dark);
+  min-width: 15rem;
 
   &:hover {
     background: var(--primary-hover);
@@ -85,7 +61,6 @@
   }
 
   @media (max-width: 480px) {
-    padding: 0.6rem;
     font-size: 0.9rem;
   }
 }

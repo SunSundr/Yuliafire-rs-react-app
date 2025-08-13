@@ -31,7 +31,7 @@ const SearchSection = ({
   setCurrentPage,
 }: SearchSectionProps) => {
   const { theme } = useTheme();
-  const { getSearchTerm, saveSearchTerm } = useStorage();
+  const { getSearchTerm, saveSearchTerm, clearSearchTerm } = useStorage();
   const [searchParams] = useSearchParams();
   const { id } = useParams<{ id?: string }>();
   const initialQuery = searchParams.get('query') || getSearchTerm() || '';
@@ -56,6 +56,7 @@ const SearchSection = ({
     if (data) {
       onSearchResults(data.data, inputValue.trim(), data.info?.pages || 1);
       if (inputValue.trim()) saveSearchTerm(inputValue.trim());
+      else clearSearchTerm();
     }
     onLoadingChange(isLoading || isRefetching);
     onErrorChange(
@@ -77,6 +78,7 @@ const SearchSection = ({
     onLoadingChange,
     onErrorChange,
     saveSearchTerm,
+    clearSearchTerm,
   ]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -140,6 +142,7 @@ const SearchSection = ({
       )}
       {data && (
         <button
+          className={styles.forceRefreshButton}
           onClick={handleForceRefresh}
           disabled={isLoading || isRefetching}
         >

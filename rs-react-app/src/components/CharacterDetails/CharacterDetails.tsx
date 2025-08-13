@@ -65,16 +65,18 @@ const CharacterDetailsComponent = () => {
   }
   return (
     <div className={`${styles.details} ${styles[theme]}`}>
-      <h3>{character.name}</h3>
-      <img src={character.image} alt={character.name} />
-      <p>Status: {character.status}</p>
-      <p>Species: {character.species}</p>
-      <p>Gender: {character.gender}</p>
-      <p>Origin: {character.origin.name}</p>
-      <p>Location: {character.location.name}</p>
-      <button onClick={handleClose} aria-label="Close details">
-        Close
-      </button>
+      <div className={styles.detailsContent}>
+        <h3>{character.name}</h3>
+        <img src={character.image} alt={character.name} />
+        <p>Status: {character.status}</p>
+        <p>Species: {character.species}</p>
+        <p>Gender: {character.gender}</p>
+        <p>Origin: {character.origin.name}</p>
+        <p>Location: {character.location.name}</p>
+        <button onClick={handleClose} aria-label="Close details">
+          Close
+        </button>
+      </div>
     </div>
   );
 };

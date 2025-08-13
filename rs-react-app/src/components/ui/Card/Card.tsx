@@ -46,6 +46,7 @@ const Card = ({ character, onCardClick }: CardProps) => {
     onCardClick();
   };
 
+  // console.log(99);
   return (
     <div
       className={`${styles.card} ${styles[theme]}`}

@@ -26,8 +26,8 @@ const App = () => {
           </Route>
           <Route path={NOT_FOUND_PATH} element={<NotFound />} />
         </Routes>
+        <Flyout />
       </main>
-      <Flyout />
       <Footer />
     </div>
   );

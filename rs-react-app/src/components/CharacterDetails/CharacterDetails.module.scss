@@ -75,3 +75,7 @@
     @include responsive-typography($font-size-base, $font-size-xs);
   }
 }
+
+.detailsContent {
+  position: fixed;
+}

@@ -18,21 +18,15 @@
   }
 }
 
-.container {
+.mainPanel {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 100%;
+  align-items: center;
 }
 
-.searchSection {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacing-sm;
-  margin-bottom: $spacing-sm;
-
-  @media (max-width: $breakpoint-mobile) {
-    order: 1;
-  }
+.container {
+  width: 100%;
 }
 
 .searchResults {

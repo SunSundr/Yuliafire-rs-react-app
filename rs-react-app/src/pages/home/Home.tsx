@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import {
   useSearchParams,
   useParams,
@@ -48,31 +48,31 @@ const Home = () => {
     [navigate]
   );
 
-  useEffect(() => {
-    if (location.pathname.startsWith('/about')) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (location.pathname.startsWith('/about')) {
+  //     return;
+  //   }
 
-    setSelectedId(id);
-  }, [id, location.pathname]);
+  //   setSelectedId(id);
+  // }, [id, location.pathname]);
 
-  useEffect(() => {
-    if (location.pathname.startsWith('/about')) return;
-    setCurrentPage(initialPage);
-  }, [initialPage, location.pathname]);
+  // useEffect(() => {
+  //   if (location.pathname.startsWith('/about')) return;
+  //   setCurrentPage(initialPage);
+  // }, [initialPage, location.pathname]);
 
-  useEffect(() => {
-    if (location.pathname.startsWith('/about')) return;
-    setQuery(queryParam);
-  }, [queryParam, location.pathname]);
+  // useEffect(() => {
+  //   if (location.pathname.startsWith('/about')) return;
+  //   setQuery(queryParam);
+  // }, [queryParam, location.pathname]);
 
-  useEffect(() => {
-    if (location.pathname.startsWith('/about')) return;
-    if (navigationTimeout.current) {
-      clearTimeout(navigationTimeout.current);
-      navigationTimeout.current = null;
-    }
-  }, [location.pathname, location.search]);
+  // useEffect(() => {
+  //   if (location.pathname.startsWith('/about')) return;
+  //   if (navigationTimeout.current) {
+  //     clearTimeout(navigationTimeout.current);
+  //     navigationTimeout.current = null;
+  //   }
+  // }, [location.pathname, location.search]);
 
   const handleSearchResults = (
     searchResults: CharacterDetails[] | null,
@@ -86,13 +86,13 @@ const Home = () => {
 
     if (searchTerm !== query) {
       setCurrentPage(1);
-      const path = `/${1}${searchTerm ? `?query=${encodeURIComponent(searchTerm)}` : ''}`;
-      performNavigation(path);
+      // const path = `/${1}${searchTerm ? `?query=${encodeURIComponent(searchTerm)}` : ''}`;
+      // performNavigation(path);
     } else {
-      const path = id ? `/${currentPage}/${id}` : `/${currentPage}`;
-      performNavigation(
-        `${path}${query ? `?query=${encodeURIComponent(query)}` : ''}`
-      );
+      // const path = id ? `/${currentPage}/${id}` : `/${currentPage}`;
+      // performNavigation(
+      //  `${path}${query ? `?query=${encodeURIComponent(query)}` : ''}`
+      // );
     }
 
     setQuery(searchTerm);
@@ -102,7 +102,7 @@ const Home = () => {
     if (location.pathname.startsWith('/about')) return;
     setSelectedId(cardId);
     const path = `/${currentPage}/${cardId}${query ? `?query=${encodeURIComponent(query)}` : ''}`;
-    performNavigation(path);
+    navigate(path);
   };
 
   const handlePageChange = (newPage: number) => {
@@ -117,7 +117,7 @@ const Home = () => {
 
   return (
     <div className={`${styles.home} ${styles[theme]}`} ref={mainPanelRef}>
-      <div className={styles.container}>
+      <div className={styles.mainPanel}>
         <SearchSection
           onSearchResults={handleSearchResults}
           onLoadingChange={setLoading}
@@ -125,7 +125,7 @@ const Home = () => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
-        <div className="wrapper">
+        <div className={styles.container}>
           <div className={styles.searchResults}>
             <div className="resultsBox">
               <ResultsSection
